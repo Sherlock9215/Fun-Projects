@@ -8,24 +8,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name=".NoOfPlayers"
-            android:label="@string/title_activity_no_of_players"
-            android:parentActivityName=".Home"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.akshaykhot.score.Home" />
-        </activity>
-        <activity
-            android:name=".PlayerNames"
-            android:label="@string/title_activity_player_names"
-            android:parentActivityName=".NoOfPlayers"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.akshaykhot.score.NoOfPlayers" />
-        </activity>
         <activity android:name=".NumPlayers" >
         </activity>
         <activity android:name=".GetPlayers" >
