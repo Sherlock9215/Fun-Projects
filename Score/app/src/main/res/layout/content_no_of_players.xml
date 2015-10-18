@@ -9,12 +9,66 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_no_of_players" tools:context="com.akshaykhot.score.NoOfPlayers">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="111dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:weightSum="1"
+        android:layout_alignParentBottom="true">
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="How Many Players?"
+            android:id="@+id/textView"
+            android:layout_weight="0.41"
+            android:gravity="center"
+            android:textSize="50dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="175dp">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="2"
+                android:id="@+id/button2"
+                android:textSize="70dp"
+                android:background="#969577"
+                android:layout_marginRight="2dp"
+                android:onClick="sendNumPlayers" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="3"
+                android:id="@+id/button3"
+                android:textSize="70dp"
+                android:background="#969577"
+                android:layout_marginRight="2dp"
+                android:onClick="sendNumPlayers" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="4"
+                android:id="@+id/button4"
+                android:textSize="70dp"
+                android:background="#969577"
+                android:onClick="sendNumPlayers" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 </RelativeLayout>
