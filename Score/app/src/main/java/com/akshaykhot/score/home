@@ -57,13 +57,10 @@ public class Home extends AppCompatActivity {
     /**
      * called when the user clicks the Send button
      */
-    public void sendMessage(View view) {
+    public void startApp(View view) {
 
         // Do something in responses to the button
-        Intent intent = new Intent(this, NoOfPlayers.class);
-        EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
+        Intent intent = new Intent(this, NumPlayers.class);
         startActivity(intent);
     }
 }

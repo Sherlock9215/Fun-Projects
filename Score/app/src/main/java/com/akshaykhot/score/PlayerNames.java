@@ -26,8 +26,6 @@ public class PlayerNames extends AppCompatActivity {
         textView.setTextSize(40);
         textView.setText("No. of Players: " + numPlayers);
 
-        // Set the text view as the activity layout
-        setContentView(textView);
 
 /*
         // Create the appropriate display depending on number of players
