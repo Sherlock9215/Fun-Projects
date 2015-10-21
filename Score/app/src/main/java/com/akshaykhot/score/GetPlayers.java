@@ -60,8 +60,6 @@ public class GetPlayers extends AppCompatActivity {
                 break;
         }
 
-
-
         // Start the second activity
         startActivity(intent);
     }

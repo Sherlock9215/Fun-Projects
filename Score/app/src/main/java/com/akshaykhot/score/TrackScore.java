@@ -42,5 +42,26 @@ public class TrackScore extends AppCompatActivity {
         }
     }
 
+    /**
+     * when the user clicks 'finish' button,
+     *  1. add all the numbers
+     *  2. find the winner
+     *  3. go to the 'winner' screen
+     */
+    public void finish(View view) {
 
+        int playerOneScore = 20, playerTwoScore = 30;
+
+        // Create a new intent to start new activity with the given data
+        Intent intent = new Intent(this, Winner.class);
+        // Put the numPlayers in the intent
+        intent.putExtra("Winner", numPlayers);
+        intent.putExtra("PlayerOne Score", playerOneScore);
+        intent.putExtra("PlayerTwo Score", playerTwoScore);
+        intent.putExtra("PlayerOne Name", player1);
+        intent.putExtra("PlayerTwo Name", player2);
+
+        // Start the second activity
+        startActivity(intent);
+    }
 }
