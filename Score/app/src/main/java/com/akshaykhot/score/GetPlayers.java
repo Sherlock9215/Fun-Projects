@@ -12,6 +12,9 @@ public class GetPlayers extends AppCompatActivity {
     String player1, player2;
 
     @Override
+    /**
+     * displays proper view according to numPlayers
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -34,6 +37,11 @@ public class GetPlayers extends AppCompatActivity {
 
     }
 
+    /**
+     * called when the user clicks the 'start' button
+     * takes player names as input according to numPlayers
+     * calls the activity to start tracking scores
+     */
     public void startGame(View view) {
         // Create a new intent to start new activity with the given data
         Intent intent = new Intent(this, TrackScore.class);

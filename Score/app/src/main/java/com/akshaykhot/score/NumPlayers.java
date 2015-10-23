@@ -16,6 +16,8 @@ public class NumPlayers extends AppCompatActivity {
 
     /**
      * called when the user clicks the appropriate button
+     * sets the value for numPlayers according to the button clicked
+     * calls the activity to get playerNames
      */
     public void sendNumPlayers(View view) {
 

@@ -23,7 +23,9 @@
             android:text="How Many Players?"
             android:id="@+id/textView"
             android:gravity="center"
-            android:textSize="50dp" />
+            android:textSize="50dp"
+            android:background="#eee"
+            android:textColor="#222" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -38,9 +40,10 @@
                 android:text="2"
                 android:id="@+id/button2"
                 android:textSize="70dp"
-                android:background="#969577"
+                android:background="#222"
                 android:layout_marginRight="2dp"
-                android:onClick="sendNumPlayers" />
+                android:onClick="sendNumPlayers"
+                android:textColor="#eee" />
 
             <Button
                 android:layout_width="0dp"
@@ -49,9 +52,10 @@
                 android:text="3"
                 android:id="@+id/button3"
                 android:textSize="70dp"
-                android:background="#969577"
+                android:background="#222"
                 android:layout_marginRight="2dp"
-                android:onClick="sendNumPlayers" />
+                android:onClick="sendNumPlayers"
+                android:textColor="#eee" />
 
             <Button
                 android:layout_width="0dp"
@@ -60,8 +64,9 @@
                 android:text="4"
                 android:id="@+id/button4"
                 android:textSize="70dp"
-                android:background="#969577"
-                android:onClick="sendNumPlayers" />
+                android:background="#222"
+                android:onClick="sendNumPlayers"
+                android:textColor="#eee" />
         </LinearLayout>
 
 

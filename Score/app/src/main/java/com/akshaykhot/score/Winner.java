@@ -7,36 +7,57 @@ import android.widget.TextView;
 
 public class Winner extends AppCompatActivity {
 
+    int numPlayers;
+    String player1, player2;
+    int playerOneScore, playerTwoScore;
+
     @Override
+    /**
+     * called when the user clicks the 'finish' button
+     * displays winner from the player scores
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.winner_two);
-
-        String player1, player2;
-        int playerOneScore, playerTwoScore;
 
         // Get the message from the intent
         Intent intent = getIntent();
-        player1 = intent.getStringExtra("PlayerOne Name");
-        player2 = intent.getStringExtra("PlayerTwo Name");
-        playerOneScore = intent.getIntExtra("PlayerOne Score", 0);
-        playerTwoScore = intent.getIntExtra("PlayerTwo Score", 0);
+        numPlayers = intent.getIntExtra("Number of Players", 2);
+        switch (numPlayers) {
+            case 2:
+                setContentView(R.layout.winner_two);
+                player1 = intent.getStringExtra("PlayerOne Name");
+                player2 = intent.getStringExtra("PlayerTwo Name");
+                playerOneScore = intent.getIntExtra("PlayerOne Score", 0);
+                playerTwoScore = intent.getIntExtra("PlayerTwo Score", 0);
 
-        // Get a handle on the TextViews for player names
-        TextView winnerTextView = (TextView) findViewById(R.id.textView12);
-        // Set the text(name of the winner)
-        if (playerOneScore > playerTwoScore) {
-            winnerTextView.setText("Winner is: " + player1);
-        } else if (playerTwoScore > playerOneScore){
-            winnerTextView.setText("Winner is: " + player2);
-        } else {
-            winnerTextView.setText("Score is tied");
+                // Get a handle on the TextViews for player names
+                TextView winnerTextView = (TextView) findViewById(R.id.textView12);
+                // Set the text(name of the winner)
+                if (playerOneScore > playerTwoScore) {
+                    winnerTextView.setText("Winner is: " + player1);
+                } else if (playerTwoScore > playerOneScore){
+                    winnerTextView.setText("Winner is: " + player2);
+                } else {
+                    winnerTextView.setText("Score is tied");
+                }
+
+                // Display all the scores
+                TextView playerOneTextView = (TextView) findViewById(R.id.textView15);
+                TextView playerTwoTextView = (TextView) findViewById(R.id.textView16);
+                playerOneTextView.setText(player1 + ": " + playerOneScore);
+                playerTwoTextView.setText(player2 + ": " + playerTwoScore);
+
+                break;
+            case 3:
+                setContentView(R.layout.three_score);
+                break;
+            case 4:
+                setContentView(R.layout.four_score);
+                break;
         }
 
-        // Display all the scores
-        TextView playerOneTextView = (TextView) findViewById(R.id.textView15);
-        TextView playerTwoTextView = (TextView) findViewById(R.id.textView16);
-        playerOneTextView.setText(player1 + ": " + playerOneScore);
-        playerTwoTextView.setText(player2 + ": " + playerTwoScore);
     }
+
+
+
 }

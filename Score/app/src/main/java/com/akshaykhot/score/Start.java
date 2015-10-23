@@ -14,11 +14,11 @@ public class Start extends AppCompatActivity {
     }
 
     /**
-     * called when the user clicks the Send button
+     * called when the user clicks the Send button,
+     * calls the activity to get numPlayers
      */
     public void startApp(View view) {
 
-        // Do something in responses to the button
         Intent intent = new Intent(this, NumPlayers.class);
         startActivity(intent);
     }
