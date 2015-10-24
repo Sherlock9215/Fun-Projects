@@ -91,7 +91,9 @@
             android:textSize="40dp"
             android:gravity="center"
             android:textColor="#222"
-            android:background="#eee" />
+            android:background="#eee"
+            android:hint="p1"
+            android:textColorHint="#ccc" />
 
         <EditText
             android:layout_width="0dp"
@@ -103,7 +105,10 @@
             android:textSize="40dp"
             android:gravity="center"
             android:textColor="#222"
-            android:background="#eee" />
+            android:background="#eee"
+            android:backgroundTintMode="src_in"
+            android:hint="p2"
+            android:textColorHint="#ccc" />
     </LinearLayout>
 
 

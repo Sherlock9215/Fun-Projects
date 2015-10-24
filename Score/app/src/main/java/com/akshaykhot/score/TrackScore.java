@@ -1,6 +1,8 @@
 package com.akshaykhot.score;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -9,6 +11,7 @@ import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TrackScore extends AppCompatActivity {
 
@@ -108,7 +111,7 @@ public class TrackScore extends AppCompatActivity {
                 AbsListView.LayoutParams.WRAP_CONTENT, 1.0f);
 
         EditText player1Score, player2Score, player3Score, player4Score;
-        int p1, p2, p3, p4;
+        int p1 = 0, p2 = 0, p3 = 0, p4 = 0;
         LinearLayout column1, column2, column3, column4;
         TextView p1Score, p2Score, p3Score, p4Score;
 
@@ -118,9 +121,9 @@ public class TrackScore extends AppCompatActivity {
 
                 //get the numbers from the text boxes
                 player1Score = (EditText) findViewById(R.id.editText7);
-                p1 = Integer.parseInt(player1Score.getText().toString());
+                p1 = validate(player1Score);
                 player2Score = (EditText) findViewById(R.id.editText8);
-                p2 = Integer.parseInt(player2Score.getText().toString());
+                p2 = validate(player2Score);
 
                 // Add the scores into the view
                 column1 = (LinearLayout) findViewById(R.id.Column1);
@@ -128,7 +131,7 @@ public class TrackScore extends AppCompatActivity {
                 p1Score.setLayoutParams(param);
                 p1Score.setText(Integer.toString(p1));
                 p1Score.setGravity(Gravity.CENTER);
-                p1Score.setTextSize(20);
+                p1Score.setTextSize(30);
                 column1.addView(p1Score);
 
                 column2 = (LinearLayout) findViewById(R.id.Column2);
@@ -136,7 +139,7 @@ public class TrackScore extends AppCompatActivity {
                 p2Score.setLayoutParams(param);
                 p2Score.setText(Integer.toString(p2));
                 p2Score.setGravity(Gravity.CENTER);
-                p2Score.setTextSize(20);
+                p2Score.setTextSize(30);
                 column2.addView(p2Score);
 
                 // Add the scores to current scores
@@ -153,11 +156,11 @@ public class TrackScore extends AppCompatActivity {
 
                 //get the numbers from the text boxes
                 player1Score = (EditText) findViewById(R.id.editText7);
-                p1 = Integer.parseInt(player1Score.getText().toString());
+                p1 = validate(player1Score);
                 player2Score = (EditText) findViewById(R.id.editText8);
-                p2 = Integer.parseInt(player2Score.getText().toString());
+                p2 = validate(player2Score);
                 player3Score = (EditText) findViewById(R.id.editText9);
-                p3 = Integer.parseInt(player3Score.getText().toString());
+                p3 = validate(player3Score);
 
                 // Add the scores into the view
                 column1 = (LinearLayout) findViewById(R.id.Column1);
@@ -165,7 +168,7 @@ public class TrackScore extends AppCompatActivity {
                 p1Score.setLayoutParams(param);
                 p1Score.setText(Integer.toString(p1));
                 p1Score.setGravity(Gravity.CENTER);
-                p1Score.setTextSize(20);
+                p1Score.setTextSize(30);
                 column1.addView(p1Score);
 
                 column2 = (LinearLayout) findViewById(R.id.Column2);
@@ -173,7 +176,7 @@ public class TrackScore extends AppCompatActivity {
                 p2Score.setLayoutParams(param);
                 p2Score.setText(Integer.toString(p2));
                 p2Score.setGravity(Gravity.CENTER);
-                p2Score.setTextSize(20);
+                p2Score.setTextSize(30);
                 column2.addView(p2Score);
 
                 column3 = (LinearLayout) findViewById(R.id.Column3);
@@ -181,7 +184,7 @@ public class TrackScore extends AppCompatActivity {
                 p3Score.setLayoutParams(param);
                 p3Score.setText(Integer.toString(p3));
                 p3Score.setGravity(Gravity.CENTER);
-                p3Score.setTextSize(20);
+                p3Score.setTextSize(30);
                 column3.addView(p3Score);
 
                 // Add the scores to current scores
@@ -201,13 +204,13 @@ public class TrackScore extends AppCompatActivity {
 
                 //get the numbers from the text boxes
                 player1Score = (EditText) findViewById(R.id.editText7);
-                p1 = Integer.parseInt(player1Score.getText().toString());
+                p1 = validate(player1Score);
                 player2Score = (EditText) findViewById(R.id.editText8);
-                p2 = Integer.parseInt(player2Score.getText().toString());
+                p2 = validate(player2Score);
                 player3Score = (EditText) findViewById(R.id.editText9);
-                p3 = Integer.parseInt(player3Score.getText().toString());
+                p3 = validate(player3Score);
                 player4Score = (EditText) findViewById(R.id.editText10);
-                p4 = Integer.parseInt(player4Score.getText().toString());
+                p4 = validate(player4Score);
 
                 // Add the scores into the view
                 column1 = (LinearLayout) findViewById(R.id.Column1);
@@ -286,7 +289,35 @@ public class TrackScore extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * adds focus on the clicked view
+     */
+    public void getFocus(View view) {
 
+        // Get the view which was clicked
+        EditText focusText = (EditText) findViewById(view.getId());
+
+
+    }
+
+    /**
+     * validate the score
+     * @param score EditText element which is to be validated
+     */
+    public int validate(EditText score) {
+
+        String WARNING_MESSAGE = "Missing score, entering 0";
+
+        if(score.getText().toString().equals("")) {
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, WARNING_MESSAGE, duration);
+            toast.show();
+            return 0;
+        } else {
+            return Integer.parseInt(score.getText().toString());
+        }
+    }
 
 
 }
