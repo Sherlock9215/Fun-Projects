@@ -50,32 +50,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- left column -->
+            <!-- player1 column -->
             <LinearLayout
-                android:id="@+id/leftColumn"
+                android:id="@+id/Column1"
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:weightSum="10">
-
-
-
-
             </LinearLayout>
 
-            <!-- right column -->
+            <!-- player2 column -->
             <LinearLayout
-                android:id="@+id/rightColumn"
+                android:id="@+id/Column2"
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:weightSum="10">
-
-
-
-
             </LinearLayout>
 
         </LinearLayout>
