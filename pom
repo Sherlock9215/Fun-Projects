@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.genologics.maven</groupId>
+    <artifactId>claritylims-integration-archetype</artifactId>
+    <version>0.0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <distributionManagement>
+        <repository>
+            <id>gls.nexus</id>
+            <name>Genologics Nexus Releases Repo</name>
+            <url>http://gls-mvn-repo:9081/nexus/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>gls.nexus</id>
+            <name>Genologics Nexus Snapshot Repo</name>
+            <url>http://gls-mvn-repo:9081/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <scm>
+        <!--
+            maven release plug in manages these properties, do not refactor into
+            property.
+        -->
+        <!-- @TODO - fix URL -->
+        <connection>scm:svn:http://svn/svn/lims/packages/maven-archetype/trunk/</connection>
+        <developerConnection>scm:svn:http://svn/svn/lims/packages/maven-archetype/trunk/</developerConnection>
+        <url>http://fisheye.gls.lan:8060/browse/LIMS/packages/maven-archetype/trunk/</url>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <tagBase>http://svn/svn/lims/packages/maven-archetype/trunk//tags/</tagBase>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
