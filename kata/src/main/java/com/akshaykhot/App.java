@@ -10,7 +10,7 @@ public class App
 
         BSearch finder = new BSearch();
         int[] list = {1,2,4,5,9,12,34};
-        int foundLocation = finder.find(9, list);
+        int foundLocation = finder.findRecursively(34, list);
         if(foundLocation != -1) {
             System.out.println("Item found at : " + foundLocation + " location in the list");
         } else {

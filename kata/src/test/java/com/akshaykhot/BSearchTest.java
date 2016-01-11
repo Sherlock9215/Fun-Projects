@@ -9,6 +9,10 @@ import org.junit.Test;
 
 public class BSearchTest {
 
+    /**
+     * tests the binary search algorithm
+     */
+    @Test
     public void testBSearch() {
         BSearch finder = new BSearch();
         int[] list = {1,2,4,6,8,9,14};
@@ -17,34 +21,13 @@ public class BSearchTest {
     }
 
     /**
-     * test to verify if the list is updated to contain the right half of the list
+     * tests the recursive binary search algorithm
      */
     @Test
-    public void testupdateListToRightHalf() {
+    public void testRecursiveSearch() {
         BSearch finder = new BSearch();
         int[] list = {1,2,4,6,8,9,14};
-        int index = 4;
-
-        int[] atualRightHalf = finder.updateListToRightHalf(list, index);
-        int[] expectedRightHalf = {9,14};
-
-        Assert.assertArrayEquals(expectedRightHalf, atualRightHalf);
+        int foundLocation = finder.findRecursively(4, list);
+        Assert.assertEquals(2, foundLocation);
     }
-
-    /**
-     * test to verify if the list is updated to contain the left half of the list
-     */
-    @Test
-    public void testupdateListToLeftHalf() {
-        BSearch finder = new BSearch();
-        int[] list = {1,2,4,6,8,9,14};
-        int index = 4;
-
-        int[] actualLeftHalf = finder.updateListToLeftHalf(list, index);
-        int[] expectedLeftHalf = {1,2,4,6,8};
-
-        Assert.assertArrayEquals(expectedLeftHalf, actualLeftHalf);
-    }
-
-
 }

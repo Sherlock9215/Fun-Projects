@@ -47,22 +47,42 @@ public class BSearch {
     }
 
     /**
-     * Divides a list into two lists, depending on a dividing index
-     * @param listToDivide array of ints to divide
-     * @param divider int index which is the separator
-     * @return rightHalf int array of numbers on the right of the index, excluding index
+     * Perform the binary search recursively on a sorted list of integers and find the location of the search target
+     * @param target int search target
+     * @param list sorted int array
+     * @return foundLocation int index of the target in the list
      */
-    public int[] updateListToRightHalf(int[] listToDivide, int divider) {
-        return Arrays.copyOfRange(listToDivide, (divider+1), listToDivide.length);
+    int findRecursively(int target, int[] list) {
+        int foundLocation = -1;
+        int leftIndex = 0;
+        int rightIndex = list.length-1;
+
+
+        foundLocation = recursiveSearch(target, list, leftIndex, rightIndex);
+
+        return foundLocation;
     }
 
     /**
-     * Divides a list into two lists, depending on a dividing index
-     * @return leftHalf int array of numbers on the left of the index, including index
+     * performs the recursive call to find the index of the target in the list
+     * @param target int search target
+     * @param list sorted int array
+     * @param leftIndex leftmost index of the list
+     * @param rightIndex rightmost index of the list
+     * @return
      */
-    public int[] updateListToLeftHalf(int[] listToDivide, int divider) {
-        return Arrays.copyOfRange(listToDivide, 0, divider);
+    int recursiveSearch(int target, int[] list, int leftIndex, int rightIndex) {
+        int middleIndex = (leftIndex+rightIndex)/2;
+        int middleElement = list[middleIndex];
+
+        if(middleElement == target) {
+            return middleIndex;
+        }
+        else if(target > middleElement) {
+            return recursiveSearch(target, list, (middleIndex+1), rightIndex);
+            } else {
+            return recursiveSearch(target, list, leftIndex, (middleIndex-1));
+            }
+
     }
-
-
 }
