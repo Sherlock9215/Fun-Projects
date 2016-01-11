@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="6"
+    tools:context="com.akshaykhot.score.TrackScore"
+    android:onClick="getFocus">
+
+    <!-- player names -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#222"
+            android:background="#eee"
+            android:textIsSelectable="false" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#222"
+            android:background="#eee" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#222"
+            android:background="#eee" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="#222"
+            android:background="#eee" />
+    </LinearLayout>
+
+    <!-- score container -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="#eee">
+
+        <!-- add score -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="4">
+
+            <!-- player1 column -->
+            <LinearLayout
+                android:id="@+id/Column1"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="10">
+            </LinearLayout>
+
+            <!-- player2 column -->
+            <LinearLayout
+                android:id="@+id/Column2"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="10">
+            </LinearLayout>
+
+            <!-- player1 column -->
+            <LinearLayout
+                android:id="@+id/Column3"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="10">
+            </LinearLayout>
+
+            <!-- player2 column -->
+            <LinearLayout
+                android:id="@+id/Column4"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="10">
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- enter score -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:weightSum="4">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText7"
+            android:layout_weight="1"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:textColor="#222"
+            android:background="#eee"
+            android:hint="p1"
+            android:textColorHint="#ccc" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText8"
+            android:layout_weight="1"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:textColor="#222"
+            android:background="#eee"
+            android:onClick="getFocus"
+            android:hint="p2"
+            android:textColorHint="#ccc" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText9"
+            android:layout_weight="1"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:textColor="#222"
+            android:background="#eee"
+            android:onClick="getFocus"
+            android:hint="p3"
+            android:textColorHint="#ccc" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/editText10"
+            android:layout_weight="1"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:textColor="#222"
+            android:background="#eee"
+            android:onClick="getFocus"
+            android:hint="p4"
+            android:textColorHint="#ccc" />
+    </LinearLayout>
+
+
+    <!-- addRow and finish -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Add"
+            android:id="@+id/button"
+            android:textSize="40dp"
+            android:onClick="add"
+            android:textColor="#eee"
+            android:background="#222" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Finish"
+            android:id="@+id/button6"
+            android:textSize="40dp"
+            android:onClick="finish"
+            android:textColor="#eee"
+            android:background="#222" />
+    </LinearLayout>
+
+</LinearLayout>

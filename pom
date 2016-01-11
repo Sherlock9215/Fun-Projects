@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.genologics.claritylims</groupId>
+        <artifactId>rpm-maven-master</artifactId>
+        <!-- @TODO - Confirm this is latest -->
+        <version>1.0.9</version>
+    </parent>
+
+    <name>@TODO@</name>
+    <groupId>INT</groupId>
+    <artifactId>IntegrationTest</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <scm>
+        <!--
+            maven release plug in manages these properties, do not refactor into
+            property.
+        -->
+        <!-- @TODO - Update the SCM Properties for your build! -->
+        <connection>scm:svn:http://svn/svn/lims/packages/@TODO@/trunk/</connection>
+        <developerConnection>scm:svn:http://svn/svn/lims/packages/@TODO@/trunk/</developerConnection>
+        <url>http://fisheye.gls.lan:8060/browse/LIMS/packages/@TODO@/trunk/</url>
+    </scm>
+    <!-- @TODO - Update the description - Note this is Externally facing in the RPM -->
+    <description>@TODO@</description>
+    <repositories>
+        <repository>
+            <id>gls-omix-repo</id>
+            <url>http://gls-mvn-repo:9081/nexus/content/groups/all/</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <test.host>csapi02.gls.lan</test.host>
+        <test.baseuri>http://${test.host}:8080/api/</test.baseuri>
+        <test.user>apiuser</test.user>
+        <test.pass>apipassword</test.pass>
+        <ftp.host>${test.host}</ftp.host>
+        <ftp.user>glsftp</ftp.user>
+        <ftp.password>glsftp</ftp.password>
+        <!-- @TODO@ update - Used by the RPM process to construct the path for this integration, no spaces -->
+        <integration_name>Integration</integration_name>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.genologics</groupId>
+                <artifactId>ClarityLIMSUtils</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>net.sourceforge.nekohtml</groupId>
+                        <artifactId>nekohtml</artifactId>
+                    </exclusion>
+                </exclusions>
+                <!-- @TODO - Confirm this is latest -->
+                <version>2.1.8</version>
+            </dependency>
+            <dependency>
+                <groupId>com.genologics</groupId>
+                <artifactId>ClarityLIMSUtils</artifactId>
+                <!-- @TODO - Confirm this is latest -->
+                <version>2.1.8</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>1.8.6</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-cli</groupId>
+                <artifactId>commons-cli</artifactId>
+                <version>1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>6.5.2</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.gmaven</groupId>
+                    <artifactId>gmaven-plugin</artifactId>
+                    <version>1.4</version>
+                    <configuration>
+                        <providerSelection>1.8</providerSelection>
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.codehaus.gmaven.runtime</groupId>
+                            <artifactId>gmaven-runtime-1.8</artifactId>
+                            <version>1.4</version>
+                            <exclusions>
+                                <exclusion>
+                                    <groupId>org.codehaus.groovy</groupId>
+                                    <artifactId>groovy-all</artifactId>
+                                </exclusion>
+                            </exclusions>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.codehaus.groovy</groupId>
+                            <artifactId>groovy-all</artifactId>
+                            <version>1.8.6</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>generateStubs</goal>
+                                <goal>compile</goal>
+                                <goal>generateTestStubs</goal>
+                                <goal>testCompile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.16</version>
+                    <configuration>
+                        <systemProperties>
+                            <property>
+                                <name>server</name>
+                                <value>${test.host}</value>
+                            </property>
+                            <property>
+                                <name>serverURL</name>
+                                <value>${test.baseuri}v2/</value>
+                            </property>
+                            <property>
+                                <name>serverUsername</name>
+                                <value>${test.user}</value>
+                            </property>
+                            <property>
+                                <name>serverPassword</name>
+                                <value>${test.pass}</value>
+                            </property>
+                            <property>
+                                <name>ftp.host</name>
+                                <value>${ftp.host}</value>
+                            </property>
+                            <property>
+                                <name>ftp.user</name>
+                                <value>${ftp.user}</value>
+                            </property>
+                            <property>
+                                <name>ftp.password</name>
+                                <value>${ftp.password}</value>
+                            </property>
+                        </systemProperties>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.1.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-no-snapshots</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireReleaseDeps>
+                                    <onlyWhenRelease>true</onlyWhenRelease>
+                                    <message>No Snapshots Allowed!</message>
+                                </requireReleaseDeps>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <!-- @TODO - Correct your SVN URL HERE -->
+                    <tagBase>http://svn/svn/lims/packages/@TODO/tags/</tagBase>
+                    <checkModificationExcludes>
+                        <!-- Provided by Bamboo -->
+                        <checkModificationExclude>build-number.txt</checkModificationExclude>
+                    </checkModificationExcludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <modules>
+        <module>integration</module>
+        <module>rpm</module>
+    </modules>
+</project>
+
+
+
+
+

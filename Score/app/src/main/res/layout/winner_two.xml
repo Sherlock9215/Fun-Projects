@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="3"
+    tools:context="com.akshaykhot.score.Winner">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView12"
+        android:layout_gravity="center_horizontal"
+        android:text="Winner is Archana"
+        android:textSize="45dp"
+        android:gravity="center"
+        android:background="#222"
+        android:textColor="#eee" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="4"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Archana: 30"
+            android:id="@+id/textView15"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:textColor="#222"
+            android:background="#eee" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Akshay: 20"
+            android:id="@+id/textView16"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:textColor="#222"
+            android:background="#eee" />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>
