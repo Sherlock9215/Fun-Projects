@@ -1,0 +1,17 @@
+1) to read a file in java:
+ * store the file in dererctly under the project, i.e.  kata
+ * Use Scanner:
+  public void readFile() {
+          weatherFile = new File("weather.txt");
+          try {
+              scanner = new Scanner(weatherFile);
+              System.out.println("File was read successfully");
+          } catch (FileNotFoundException e) {
+              System.out.println("File was not found");
+          }
+      }
+
+
+2) To Do:
+    * Create tests for readFile and parseFile
+    * resume Kata
