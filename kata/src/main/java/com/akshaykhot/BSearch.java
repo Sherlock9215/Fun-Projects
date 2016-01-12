@@ -19,6 +19,10 @@ public class BSearch {
     int find(int target, int[] list) {
 
         int foundLocation = -1;
+        if(list.length == 0) {
+            System.out.println("List was empty");
+            return foundLocation;
+        }
         int leftIndex = 0;
         int rightIndex = list.length-1;
 
@@ -54,9 +58,12 @@ public class BSearch {
      */
     int findRecursively(int target, int[] list) {
         int foundLocation = -1;
+        if(list.length == 0) {
+            System.out.println("List was empty");
+            return foundLocation;
+        }
         int leftIndex = 0;
         int rightIndex = list.length-1;
-
 
         foundLocation = recursiveSearch(target, list, leftIndex, rightIndex);
 
@@ -72,6 +79,9 @@ public class BSearch {
      * @return
      */
     int recursiveSearch(int target, int[] list, int leftIndex, int rightIndex) {
+        if(leftIndex > rightIndex) {
+            return -1;
+        }
         int middleIndex = (leftIndex+rightIndex)/2;
         int middleElement = list[middleIndex];
 
@@ -83,6 +93,5 @@ public class BSearch {
             } else {
             return recursiveSearch(target, list, leftIndex, (middleIndex-1));
             }
-
     }
 }
