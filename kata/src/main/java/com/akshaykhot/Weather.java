@@ -19,7 +19,7 @@ public class Weather {
     Map<Integer, ArrayList<Integer>> weatherMap;
 
     /**
-     * reads the weather.txt file and parses it line by line
+     * reads the weather.txt file and parses it line by line to store in a map
      */
     public void parseFile(String weatherFileName) {
 
@@ -88,6 +88,9 @@ public class Weather {
         weatherFile = new File(weatherFileName);
         try {
             fileScanner = new Scanner(weatherFile);
+            //ignore the first line which contains the metadata, and the next blank line
+            fileScanner.nextLine();
+            fileScanner.nextLine();
             System.out.println("File was read successfully");
         } catch (FileNotFoundException e) {
             System.out.println("File was not found");
