@@ -103,14 +103,14 @@ public class WeatherTest {
      * tests the code which finds the day depending on the lowest temp spread
      */
     @Test
-    public void testfindDayWithLowestTempSpread() {
+    public void testFindDayWithLowestTempSpread() {
         Map<Integer, ArrayList<Integer>> weatherMap = new HashMap<Integer, ArrayList<Integer>>();
         weatherMap.put(2, new ArrayList<Integer>(Arrays.asList(88, 59)));
         weatherMap.put(5, new ArrayList<Integer>(Arrays.asList(79, 63)));
+        weatherMap.put(8, new ArrayList<Integer>(Arrays.asList(79, 77)));
 
         Weather weather = new Weather();
         int dayWithLowestTempSpread = weather.findDayWithLowestTempSpread(weatherMap);
-        Assert.assertEquals(5, dayWithLowestTempSpread);
-
+        Assert.assertEquals(8, dayWithLowestTempSpread);
     }
 }

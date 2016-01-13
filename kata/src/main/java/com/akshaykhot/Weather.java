@@ -37,8 +37,29 @@ public class Weather {
         findDayWithLowestTempSpread(weatherMap);
     }
 
+    /**
+     * @param weatherMap Map of day to [maxtemp, minTemp], all integers
+     * @return day with the lowest temperature spread
+     */
     public int findDayWithLowestTempSpread(Map<Integer, ArrayList<Integer>> weatherMap) {
-        return 0;
+        int dayWithLowestSpread = 0;
+        int day, maxTemp, minTemp;
+        //Assumption, temperature spread won't be greater than 100
+        int spread, lowestSpread = 100;
+
+        for (Map.Entry<Integer, ArrayList<Integer>> entry : weatherMap.entrySet()) {
+            day = entry.getKey();
+            maxTemp = entry.getValue().get(0);
+            minTemp = entry.getValue().get(1);
+            spread = maxTemp - minTemp;
+
+            if (spread < lowestSpread) {
+                lowestSpread = spread;
+                dayWithLowestSpread = day;
+            }
+        }
+        System.out.println("The lowest spread is: " + lowestSpread + " and the day is: " + dayWithLowestSpread);
+        return dayWithLowestSpread;
     }
 
     /**
