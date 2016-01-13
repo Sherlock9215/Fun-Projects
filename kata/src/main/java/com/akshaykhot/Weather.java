@@ -14,7 +14,8 @@ import java.util.Scanner;
 public class Weather {
 
     private File weatherFile;
-    private Scanner scanner = null;
+    private Scanner fileScanner = null;
+    private Scanner lineScanner = null;
     Map<Integer, ArrayList<Integer>> weatherMap;
 
     /**
@@ -27,11 +28,17 @@ public class Weather {
 
         //read and parse the file
         readFile(weatherFileName);
-        while(scanner.hasNextLine()) {
+        while (fileScanner.hasNextLine()) {
             //add the relevant entries in the line in weatherMap
-            storeEntries(scanner.nextLine(), weatherMap);
+            storeEntries(fileScanner.nextLine(), weatherMap);
         }
-        scanner.close();
+
+        //now we have a weatherMap that has [Day: {maxTemp, minTemp}] structure
+        findDayWithLowestTempSpread(weatherMap);
+    }
+
+    public int findDayWithLowestTempSpread(Map<Integer, ArrayList<Integer>> weatherMap) {
+        return 0;
     }
 
     /**
@@ -40,19 +47,17 @@ public class Weather {
     void storeEntries(String weatherLine, Map<Integer, ArrayList<Integer>> weatherMap) {
 
         //parse the weatherLine
-        scanner = new Scanner(weatherLine);
+        lineScanner = new Scanner(weatherLine);
         int day, maxTemp, minTemp;
-        day = Integer.parseInt(scanner.next());
-        maxTemp = Integer.parseInt(scanner.next());
-        minTemp = Integer.parseInt(scanner.next());
+        day = Integer.parseInt(lineScanner.next());
+        maxTemp = Integer.parseInt(lineScanner.next());
+        minTemp = Integer.parseInt(lineScanner.next());
         ArrayList<Integer> temp = new ArrayList<Integer>();
         temp.add(maxTemp);
         temp.add(minTemp);
 
         //add the values in the weatherMap
         weatherMap.put(day, temp);
-
-        scanner.close();
     }
 
     /**
@@ -61,7 +66,7 @@ public class Weather {
     public void readFile(String weatherFileName) {
         weatherFile = new File(weatherFileName);
         try {
-            scanner = new Scanner(weatherFile);
+            fileScanner = new Scanner(weatherFile);
             System.out.println("File was read successfully");
         } catch (FileNotFoundException e) {
             System.out.println("File was not found");

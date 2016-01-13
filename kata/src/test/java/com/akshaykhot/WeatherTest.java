@@ -16,7 +16,7 @@ public class WeatherTest {
 
     PrintWriter writer = null;
     File file = null;
-    Scanner scanner = null;
+    Scanner lineScanner = null;
 
     /**
      * Helper method to create a sample text file for reading and parsing
@@ -24,9 +24,7 @@ public class WeatherTest {
     public void createFile(String fileName) {
         try {
             writer = new PrintWriter(fileName);
-            writer.println("The first line");
-
-            writer.println("The second line");
+            writer.println("1  88    59    74          53.8       0.00 F       280  9.6 270  17  1.6  93 23 1004.5");
             writer.close();
         } catch (FileNotFoundException e) {
             System.out.println("Unable to create the file");
@@ -77,11 +75,11 @@ public class WeatherTest {
     @Test
     public void testStoreEntries() {
         String weatherLine = "3  77    55    66          39.6       0.00         350  5.0 350   9  2.8  59 24 1016.8";
-        scanner = new Scanner(weatherLine);
+        lineScanner = new Scanner(weatherLine);
         Map<Integer, ArrayList<Integer>> weatherMap = new HashMap<Integer, ArrayList<Integer>>();
 
         //get the actual values
-        int actualDay = 0, actualMinTemp = 0, actualMaxTemp = 0;
+        int actualDay = 0, actualMaxTemp = 0, actualMinTemp = 0;
         Weather weather = new Weather();
         weather.storeEntries(weatherLine, weatherMap);
 
@@ -91,13 +89,28 @@ public class WeatherTest {
         }
         //iterating over values only
         for (List<Integer> value : weatherMap.values()) {
-            actualMinTemp = value.get(0);
-            actualMaxTemp = value.get(1);
+            actualMaxTemp = value.get(0);
+            actualMinTemp = value.get(1);
         }
 
         Assert.assertEquals(3, actualDay);
-        Assert.assertEquals(77, actualMinTemp);
-        Assert.assertEquals(55, actualMaxTemp);
+        Assert.assertEquals(77, actualMaxTemp);
+        Assert.assertEquals(55, actualMinTemp);
+
+    }
+
+    /**
+     * tests the code which finds the day depending on the lowest temp spread
+     */
+    @Test
+    public void testfindDayWithLowestTempSpread() {
+        Map<Integer, ArrayList<Integer>> weatherMap = new HashMap<Integer, ArrayList<Integer>>();
+        weatherMap.put(2, new ArrayList<Integer>(Arrays.asList(88, 59)));
+        weatherMap.put(5, new ArrayList<Integer>(Arrays.asList(79, 63)));
+
+        Weather weather = new Weather();
+        int dayWithLowestTempSpread = weather.findDayWithLowestTempSpread(weatherMap);
+        Assert.assertEquals(5, dayWithLowestTempSpread);
 
     }
 }
