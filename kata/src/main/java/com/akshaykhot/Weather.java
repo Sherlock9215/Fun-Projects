@@ -67,18 +67,22 @@ public class Weather {
      */
     void storeEntries(String weatherLine, Map<Integer, ArrayList<Integer>> weatherMap) {
 
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+
         //parse the weatherLine
         lineScanner = new Scanner(weatherLine);
         int day, maxTemp, minTemp;
-        day = Integer.parseInt(lineScanner.next());
-        maxTemp = Integer.parseInt(lineScanner.next());
-        minTemp = Integer.parseInt(lineScanner.next());
-        ArrayList<Integer> temp = new ArrayList<Integer>();
-        temp.add(maxTemp);
-        temp.add(minTemp);
-
-        //add the values in the weatherMap
-        weatherMap.put(day, temp);
+        try {
+            day = Integer.parseInt(lineScanner.next());
+            maxTemp = Integer.parseInt(lineScanner.next());
+            minTemp = Integer.parseInt(lineScanner.next());
+            temp.add(maxTemp);
+            temp.add(minTemp);
+            //add the values in the weatherMap
+            weatherMap.put(day, temp);
+        } catch (NumberFormatException e) {
+            System.out.println("Reached end of file.");
+        }
     }
 
     /**
