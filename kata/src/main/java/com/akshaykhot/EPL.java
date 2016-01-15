@@ -15,8 +15,16 @@ public class EPL {
 
     private Scanner fileReader = null;
     private Scanner lineReader = null;
-    private File football;
+    private File football = null;
     private Map<String, Integer> teamToGoalDifference;
+
+    public File getFootball() {
+        return this.football;
+    }
+
+    public Map<String, Integer> getTeamToGoalDifference() {
+        return teamToGoalDifference;
+    }
 
     public void execute(String fileName) {
         readFile(fileName);
@@ -30,11 +38,11 @@ public class EPL {
         try {
             fileReader = new Scanner(football);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("File was not found, try again");
         }
     }
 
-    private void parseFileAndStoreInMap() {
+    public void parseFileAndStoreInMap() {
         String team = "";
         int goalsForTeam = 0, goalsAgainstTeam = 0, goalDifference = 0;
         teamToGoalDifference = new HashMap<String, Integer>();
@@ -60,7 +68,6 @@ public class EPL {
                 teamToGoalDifference.put(team, goalDifference);
             }
         }
-        System.out.println("\nMap of team to goals is created");
     }
 
     private void calculateTeamWithLowestGoalDifference() {
@@ -68,7 +75,6 @@ public class EPL {
         String teamWithLowestGoalDiff = "";
         int lowestGoalDiff = 100;  //Assumption: goal difference won't be greater than 100
         for (Map.Entry<String, Integer> entry : teamToGoalDifference.entrySet()) {
-            System.out.println(entry.getKey() + " " + entry.getValue());
             if (entry.getValue() < lowestGoalDiff) {
                 lowestGoalDiff = entry.getValue();
                 teamWithLowestGoalDiff = entry.getKey();
